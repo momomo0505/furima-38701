@@ -48,7 +48,7 @@
 | ------------- | --------- | ----------- |
 | order_id      | references| null: false, foreign_key: true |
 | post_code     | integer   | null: false |
-| prefecture_id | string    | null: false |
+| prefecture    | string    | null: false |
 | city          | string    | null: false |
 | block         | string    | null: false |
 | building      | string    |
