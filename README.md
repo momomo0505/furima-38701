@@ -18,12 +18,17 @@
 
 ## Itemsテーブル
 
-| Column        | Type      | Options     |
-| ------------- | --------- | ----------- |
-| name          | string    | null: false |
-| description   | text      | null: false |
-| price         | integer   | null: false |
-| user          | references| null: false, foreign_key: true |
+| Column         | Type      | Options     |
+| -------------- | --------- | ----------- |
+| name           | string    | null: false |
+| description    | string    | null: false |
+| category       | string    | null: false |
+| item_condition | string    | null: false |
+| shipping charge| string    | null: false |
+| prefecture     | string    | null: false |
+| days_to_ship   | string    | null: false |
+| price          | integer   | null: false |
+| user           | references| null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -54,6 +59,8 @@
 | block         | string    | null: false |
 | building      | string    |
 | tel           | integer   | null: false |
+| order         | references| null: false, foreign_key: true |
+
 
 ### Association
 - belongs_to :order
