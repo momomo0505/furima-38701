@@ -43,7 +43,7 @@
 - has_one :payment
 
 
-## paymentテーブル
+## paymentsテーブル
 
 | Column        | Type      | Options     |
 | ------------- | --------- | ----------- |
