@@ -8,7 +8,7 @@
 | first_name1        | string  | null: false |
 | last_name1         | string  | null: false |
 | first_name2        | string  | null: false |
-| last_name1         | string  | null: false |
+| last_name2         | string  | null: false |
 | birthday           | date    | null: false |
 
 ### Association
