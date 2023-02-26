@@ -3,7 +3,7 @@
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
 | nickname      | string  | null: false |
-| email         | string  | null: false |
+| email         | string  | null: false , unique: true|
 | password      | string  | null: false |
 | first_name1   | string  | null: false |
 | last_name1    | string  | null: false |
