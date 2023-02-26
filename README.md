@@ -25,7 +25,7 @@
 | price         | integer   | null: false |
 
 ### Association
-- belong_to :user
+- belongs_to :user
 - has_one :order
 
 
@@ -37,8 +37,8 @@
 | item          | references| null: false, foreign_key: true |
 
 ### Association
-- belong_to :user
-- belong_to :item
+- belongs_to :user
+- belongs_to :item
 - has_one :payment
 
 
@@ -55,4 +55,4 @@
 | tel           | integer   | null: false |
 
 ### Association
-- belong_to :order
+- belongs_to :order
