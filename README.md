@@ -58,7 +58,7 @@
 | city          | string    | null: false |
 | block         | string    | null: false |
 | building      | string    |
-| tel           | integer   | null: false |
+| tel           | string    | null: false |
 | order         | references| null: false, foreign_key: true |
 
 
