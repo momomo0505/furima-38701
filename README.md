@@ -21,7 +21,7 @@
 | Column         | Type      | Options     |
 | -------------- | --------- | ----------- |
 | name           | string    | null: false |
-| description    | string    | null: false |
+| description    | text      | null: false |
 | category       | string    | null: false |
 | item_condition | string    | null: false |
 | shipping charge| string    | null: false |
