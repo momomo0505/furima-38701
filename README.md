@@ -18,17 +18,17 @@
 
 ## Itemsテーブル
 
-| Column         | Type      | Options     |
-| -------------- | --------- | ----------- |
-| name           | string    | null: false |
-| description    | text      | null: false |
-| category       | string    | null: false |
-| item_condition | string    | null: false |
-| shipping charge| string    | null: false |
-| prefecture     | string    | null: false |
-| days_to_ship   | string    | null: false |
-| price          | integer   | null: false |
-| user           | references| null: false, foreign_key: true |
+| Column            | Type      | Options     |
+| ----------------- | --------- | ----------- |
+| name              | string    | null: false |
+| description       | text      | null: false |
+| category_id       | integer   | null: false |
+| item_condition_id | integer   | null: false |
+| shipping_charge_id| integer   | null: false |
+| prefecture_id     | integer   | null: false |
+| days_to_ship_id   | integer   | null: false |
+| price             | integer   | null: false |
+| user              | references| null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
