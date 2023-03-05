@@ -93,6 +93,12 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
     end
 
+    it '全角文字が含まれていると登録できない' do
+      @user.password = '１23abac'
+      @user.password_confirmation = '１23abac'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+    end
 
     it 'passwordとpassword_confirmationが不一致では登録できない' do
       @user.password = '123456'
@@ -126,15 +132,15 @@ RSpec.describe User, type: :model do
     end
 
     it '名字が空欄では登録できない' do
-      @user.last_name = ""
+      @user.last_name =  ''
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name is invalid")
+      expect(@user.errors.full_messages).to include("Last name can't be blank")
     end
 
     it '名前が空欄では登録できない' do
-      @user.first_name = ""
+      @user.first_name = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name is invalid")
+      expect(@user.errors.full_messages).to include("First name can't be blank")
     end
 
 
