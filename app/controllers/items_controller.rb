@@ -1,10 +1,17 @@
 class ItemsController < ApplicationController
   def new 
+    @item = Item.new
     authenticate_user!
   end
 
   def index
+
   end
+end
+
+  
+
+def create
 end
 
 private
