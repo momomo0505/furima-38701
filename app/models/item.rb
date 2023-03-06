@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
 
-  validates :name, :text, :image, presence: true
+  validates :name, :text, :image, :price, presence: true
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :item_condition_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :shipping_charge_id, numericality: { other_than: 1 , message: "can't be blank"}
