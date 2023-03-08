@@ -7,14 +7,19 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
 
-  validates :name, :text, :image, :price, presence: true
-  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :item_condition_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :shipping_charge_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :days_to_ship_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
-  
+  with_options presence: true do
+    validates :user_id
+    validates :image
+    validates :name
+    validates :description
+    validates :category_id
+    validates :item_condition_id
+    validates :shipping_charge_id
+    validates :prefecture_id
+    validates :days_to_ship_id
+    # 300円以上かつ9,999,999円以下で、半角数字でないと入力不可
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  end
 
   belongs_to :user
   has_one :order
