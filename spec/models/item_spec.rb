@@ -1,8 +1,8 @@
 require 'rails_helper'
+
 RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
-    sleep(1)
   end
 
   describe '商品出品機能' do
@@ -12,7 +12,7 @@ RSpec.describe Item, type: :model do
       expect(@item).to be_valid
     end
 
-    it '商品名が40文字以内であれば出品できる' do
+    it '商品名が40文字以内で存在すれば出品できる' do
       @item.name = 'あ'
       expect(@item).to be_valid
     end
@@ -74,8 +74,10 @@ RSpec.describe Item, type: :model do
     end
 
     it '商品名が40文字以上であれば出品できない' do
-      @item.name = 'ああああああああああああああああああああああああああああああああああああああああ'
-      expect(@item).to be_valid
+      @item.name = 'あああああああああああああああああああああああああああああああああああああああああああ'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+      
     end
 
     it '商品の説明が空欄だと出品できない' do
@@ -84,34 +86,34 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Description can't be blank")
     end
 
-    it 'カテゴリーが空欄では出品できない' do
-      @item.category = nil
+    it 'カテゴリーに「---」が選択されているときは出品できない' do
+      @item.category_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category can't be blank")
+      expect(@item.errors.full_messages).to include('Category must be other than 0')
     end
 
-    it '商品の状態が空欄では出品できない' do
-      @item.item_condition = nil
+    it '商品の状態に「---」が選択されているときは出品できない' do
+      @item.item_condition_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Item condition can't be blank")
+      expect(@item.errors.full_messages).to include("Item condition must be other than 0")
     end
 
-    it '配送料の負担が空欄では出品できない' do
-      @item.shipping_charge = nil
+    it '配送料の負担に「---」が選択されているときは出品できない' do
+      @item.shipping_charge_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
+      expect(@item.errors.full_messages).to include("Shipping charge must be other than 0")
     end
 
-    it '発送元の地域が空欄では出品できない' do
-      @item.prefecture = nil
+    it '発送元の地域に「---」が選択されているときは出品できない' do
+      @item.prefecture_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+      expect(@item.errors.full_messages).to include("Prefecture must be other than 0")
     end
 
-    it '発送までの日数が空欄では出品できない' do
-      @item.days_to_ship = nil
+    it '発送までの日数に「---」が選択されているときは出品できない' do
+      @item.days_to_ship_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Days to ship can't be blank")
+      expect(@item.errors.full_messages).to include("Days to ship must be other than 0")
     end
 
     it '価格が300円未満だと出品できない' do
