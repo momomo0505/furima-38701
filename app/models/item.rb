@@ -12,11 +12,14 @@ class Item < ApplicationRecord
   belongs_to :prefecture  
   belongs_to :days_to_ship
 
+ 
+
   with_options presence: true do
+    validates :user
     validates :image
     validates :name, length: { maximum: 40 }
     validates :description, length: { maximum: 1000 }
-    validates :price
+    validates :price, numericality:{ with: /\A[0-9]+\z/, message: 'should be half-width numbers' }
   end
 
   with_options numericality: { other_than: 0 }do
