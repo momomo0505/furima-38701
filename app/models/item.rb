@@ -18,6 +18,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name, length: { maximum: 40 }
     validates :description, length: { maximum: 1000 }
+    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   end
 
   with_options numericality: { other_than: 0 }do
@@ -28,5 +29,5 @@ class Item < ApplicationRecord
   validates :days_to_ship_id  
   end
 
-validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+
 end
