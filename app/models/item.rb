@@ -15,7 +15,6 @@ class Item < ApplicationRecord
  
 
   with_options presence: true do
-    validates :user
     validates :image
     validates :name, length: { maximum: 40 }
     validates :description, length: { maximum: 1000 }
