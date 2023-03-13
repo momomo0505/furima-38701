@@ -137,19 +137,19 @@ RSpec.describe Item, type: :model do
     it '価格が空欄だと出品できない' do
       @item.price = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price can't be blank")
+      expect(@item.errors.full_messages).to include("Price is not a number")
     end
 
     it '価格に半角数字以外が含まれている場合は出品できない' do
       @item.price = "9０００"
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price should be half-width numbers")
+      expect(@item.errors.full_messages).to include("Price is not a number")
     end
 
     it 'userが紐付いていなければ出品できない' do
       @item.user = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("User can't be blank")
+      expect(@item.errors.full_messages).to include("User must exist")
     end
     
   end
