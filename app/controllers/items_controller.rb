@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user! , except: [:index , :show]
+  before_action :set_item, only: [:edit, :update]
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def new 
     @item = Item.new
@@ -35,7 +40,6 @@ end
 #end
 
 def edit
-  @item = Item.find(params[:id])
   if @item.user_id == current_user.id && @item.order.nil?
   else
     redirect_to root_path
@@ -43,7 +47,6 @@ def edit
 end
 
 def update
-  @item = Item.find(params[:id])
   @item.update(item_params)
   if @item.valid?
     redirect_to item_path(item_params)
