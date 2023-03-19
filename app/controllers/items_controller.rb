@@ -43,6 +43,7 @@ def edit
 end
 
 def update
+  @item = Item.find(params[:id])
   @item.update(item_params)
   # バリデーションがOKであれば詳細画面へ
   if @item.valid?
