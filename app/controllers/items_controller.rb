@@ -45,7 +45,6 @@ end
 def update
   @item = Item.find(params[:id])
   @item.update(item_params)
-  # バリデーションがOKであれば詳細画面へ
   if @item.valid?
     redirect_to item_path(item_params)
   else
