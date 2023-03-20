@@ -42,7 +42,7 @@ end
 
 def update
   if @item.update(item_params)
-    render 'show'
+    redirect_to item_path(@item)
   else
     render 'edit'
   end
