@@ -3,9 +3,11 @@
 #class OrderForm < ApplicationRecord（不要）
 class OrderForm
   include ActiveModel::Model
+  attr_accessor :price, :token
   attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :city, :block, :building, :tel
 
   with_options presence: true do
+    validates :token
     validates :user_id
     validates :item_id
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
