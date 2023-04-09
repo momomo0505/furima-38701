@@ -53,17 +53,29 @@ RSpec.describe OrderForm, type: :model do
       it '郵便番号post_codeが空だと保存できないこと' do
         @order_form.post_code = ''
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Post code can't be blank", "Post code is invalid. Include hyphen(-)")
+        expect(@order_form.errors.full_messages).to include("Post code can't be blank")
       end
       
-      it '郵便番号post_codeが「3桁ハイフン4桁」の半角文字列の形式でないと保存できないこと' do
-        @order_form.post_code = 123-456
+      it '郵便番号post_codeは半角文字列の形式でないと保存できないこと' do
+        @order_form.post_code = '123-4５67'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_form.errors.full_messages).to include("Post code is invalid")
+      end
+
+      it '郵便番号post_codeが「3桁ハイフン4桁」でないと保存できないこと' do
+        @order_form.post_code = '1-23'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Post code is invalid")
+      end
+
+      it '郵便番号post_codeにハイフンがないと保存できないこと' do
+        @order_form.post_code = '1234567'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Post code is invalid")
       end
 
       it '都道府県prefectureを選択していないと保存できないこと' do
-        @order_form.prefecture_id = nil
+        @order_form.prefecture_id = 0
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Prefecture can't be blank")
       end
