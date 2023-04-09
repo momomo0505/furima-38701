@@ -11,9 +11,6 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).order("created_at DESC")
   end
 
-  def show
-  end
-
 def create
   @item = Item.new(item_params)
   if @item.save
@@ -31,7 +28,7 @@ def destroy
 end
 
 def edit
-  if @item.user_id == current_user.id
+  if @item.user_id == current_user.id && @item.order.nil?
   else
     redirect_to root_path
   end
