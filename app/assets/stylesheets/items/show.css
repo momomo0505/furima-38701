@@ -205,3 +205,10 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.preview-image {
+  height: 100px;
+  width: 100px;
+  /* プレビュー用、縦横比を保ったまま画像を縦横100pxのサイズに収めるプロパティ */
+  object-fit: contain;
+}
