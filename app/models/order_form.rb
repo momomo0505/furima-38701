@@ -9,14 +9,12 @@ class OrderForm
     validates :token
     validates :user_id
     validates :item_id
-    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ , message: 'is invalid' }
+    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ , message: 'はハイフンを含めた半角文字列で入力してください (例：123-4567)' }
     validates :city
     validates :block
-    validates :tel, format: { with: /\A[0-9]{10,11}\z/, message: 'is invalid' }
-    # validates :token
-    end
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
-
+    validates :tel, format: { with: /\A[0-9]{10,11}\z/, message: 'は10桁以上11桁以内の半角数値で入力してください' }
+    validates :prefecture_id, numericality: { other_than: 0, message: "を入力してください" }
+  end
 
 
 def save

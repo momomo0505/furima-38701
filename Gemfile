@@ -87,3 +87,5 @@ gem 'payjp'
 gem "aws-sdk-s3", require: false
 
 gem 'mail', '2.7.1' #mailのバージョンを下げる指定をすることで、dateのgemを取得しないようにするため
+
+gem 'rails-i18n'
