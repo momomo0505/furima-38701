@@ -3,6 +3,12 @@ ja:
     attributes:
       user:
 
+      date:
+       order:
+      - :year
+      - :month
+      - :day
+
     activerecord:
     attributes:
       item:
